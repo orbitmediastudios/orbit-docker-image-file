@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.0-apache
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libmcrypt-dev libxml2-dev libxslt1-dev git && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
