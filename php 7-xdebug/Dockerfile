@@ -64,8 +64,8 @@ RUN git clone -b master https://github.com/WordPress-Coding-Standards/WordPress-
 # Add Drupal CS
 RUN git clone --branch 8.x-2.x http://git.drupal.org/project/coder.git /usr/share/drupal_cs
 
-# Connect Code Sniffer with Drupal CS
-RUN phpcs --config-set installed_paths /usr/share/wpcs,/usr/share/drupal_cs/coder_sniffer
+# Connect Code Sniffer with Wordpress, Drupal CS - add project root directory for custom
+RUN phpcs --config-set installed_paths /usr/share/wpcs,/usr/share/drupal_cs/coder_sniffer,/var/www/html
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
