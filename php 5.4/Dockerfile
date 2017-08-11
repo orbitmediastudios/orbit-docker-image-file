@@ -14,6 +14,7 @@ RUN docker-php-ext-install soap
 RUN docker-php-ext-install sockets
 RUN docker-php-ext-install xmlrpc
 RUN docker-php-ext-install zip
+RUN docker-php-ext-install mbstring
 
 RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
     && pecl install memcached-2.2.0 \
