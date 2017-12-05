@@ -1,10 +1,9 @@
-FROM php:7.1-apache
+FROM php:7.2-apache
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libxslt1-dev git && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 	&& docker-php-ext-install gd
 RUN docker-php-ext-install gettext
-RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
