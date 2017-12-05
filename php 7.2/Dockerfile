@@ -1,10 +1,9 @@
-FROM php:7.1-apache
+FROM php:7.2-apache
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libxslt1-dev git && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 	&& docker-php-ext-install gd
 RUN docker-php-ext-install gettext
-RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
@@ -20,11 +19,6 @@ RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
 
 RUN pecl install redis-3.1.1 \
     && docker-php-ext-enable redis
-
-RUN pecl install xdebug \
-    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_connect_back=off" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN echo "date.timezone = America/Chicago" > /usr/local/etc/php/php.ini
 RUN echo "log_errors = on" >> /usr/local/etc/php/php.ini
