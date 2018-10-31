@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
     && pecl install memcached-3.0.3 \
     && docker-php-ext-enable memcached
 
-RUN pecl install redis-3.1.1 \
+RUN pecl install redis \
     && docker-php-ext-enable redis
 
 RUN pecl install xdebug \

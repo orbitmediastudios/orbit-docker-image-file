@@ -1,6 +1,6 @@
 FROM php:5.6-apache
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libmcrypt-dev libxml2-dev libxslt1-dev git && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libxslt1-dev git && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 	&& docker-php-ext-install gd
 RUN docker-php-ext-install gettext
@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
 RUN pecl install redis-3.1.1 \
     && docker-php-ext-enable redis
 
-RUN pecl install xdebug \
+RUN pecl install xdebug-2.5.5 \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_connect_back=off" >> /usr/local/etc/php/conf.d/xdebug.ini
