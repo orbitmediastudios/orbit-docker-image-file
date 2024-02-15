@@ -1,5 +1,5 @@
 # based on smartapps/bitbucket-pipelines-debian-10 - use with php8.0
-FROM php:8.0.28-buster
+FROM php:8.2-buster
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL en_US.UTF-8
